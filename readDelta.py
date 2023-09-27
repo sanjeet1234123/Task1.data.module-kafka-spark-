@@ -1,5 +1,4 @@
 import os
-# Set the necessary packages and configurations
 os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.4,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.4,io.delta:delta-core_2.12:2.0.0 pyspark-shell'
 from pyspark.sql.functions import from_json, current_date, current_timestamp, lit, create_map
 from pyspark.sql import SparkSession

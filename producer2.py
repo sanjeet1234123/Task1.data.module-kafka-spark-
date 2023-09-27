@@ -5,6 +5,9 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType
 spark = SparkSession.builder.appName("KafkaProducer").getOrCreate()
+
+#creating schema for producer
+
 schema = StructType([
     StructField("Date/Time", StringType(), True),
     StructField("LVActivePower", DoubleType(), True),
@@ -12,7 +15,10 @@ schema = StructType([
     StructField("Theoretical_Power_Curve", DoubleType(), True),
     StructField("WindDirection", DoubleType(), True),
 ])
+#reading data from csv
+
 df = spark.read.option("header", "true").schema(schema).csv("/home/xs391-sanjha/code/T2.csv")
 df.show()
+
 df.selectExpr("to_json(struct(*)) AS value").write.format("kafka").option("kafka.bootstrap.servers","localhost:9092").option("topic","test1234").save()
 

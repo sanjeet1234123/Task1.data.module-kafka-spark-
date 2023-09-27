@@ -29,11 +29,6 @@ df_per_day = df.groupBy(df.signal_ts.cast("date")).agg({'signal_ts': 'count'})
 
 df_per_day.show()
 
-# # # Task 3: Calculate Average value of all the signals per hour
-# df_avg_per_hour = df.groupBy(df["Date/Time"].cast("hour")).agg(
-#     {"LVActivePower": "avg", "WindSpeed": "avg", "Theoretical_Power_Curve": "avg", "WindDirection": "avg"}
-# )
-
 # Task 3: Calculate Average value of all the signals per hour
 
 df_avg_per_hour = df.withColumn("Hour", df["Date/Time"].substr(12, 2).cast("int")) \
