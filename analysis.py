@@ -46,7 +46,7 @@ df = df.withColumn(
     .when((col('LVActivePower') >= 1000), 'Exceptional')
     .otherwise('Unknown')
 )
-df.show()
+df.show(20,False)
 
 # Task 5: Create a new dataframe with specified JSON
 
