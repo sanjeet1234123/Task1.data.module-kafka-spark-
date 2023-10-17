@@ -17,7 +17,7 @@ schema = StructType([
 ])
 #reading data from csv
 
-df = spark.read.option("header", "true").schema(schema).csv("/home/xs391-sanjha/code/T2.csv")
+df = spark.read.option("header", "true").schema(schema).csv("/home/xs391-sanjha/Task1.data.module(kafka&spark)/T2.csv")
 df.show()
 
 df.selectExpr("to_json(struct(*)) AS value").write.format("kafka").option("kafka.bootstrap.servers","localhost:9092").option("topic","test1234").save()

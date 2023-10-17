@@ -10,7 +10,6 @@ spark = pyspark.sql.SparkSession.builder.appName("deltaANA") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")\
     .getOrCreate()
 
-# TASKS
 # Task 1: Read data from Delta Lake
 
 df = spark.read.format("delta").load("/home/xs391-sanjha/code/delta")

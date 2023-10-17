@@ -9,5 +9,5 @@ spark = pyspark.sql.SparkSession.builder.appName("MyApp") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")\
     .getOrCreate()
 
-df = spark.read.format("delta").load("/home/xs391-sanjha/code/delta")
+df = spark.read.format("delta").load("/home/xs391-sanjha/Task1.data.module(kafka&spark)/delta")
 df.show()
